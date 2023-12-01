@@ -7,11 +7,17 @@ createdb:
 dropdb:
 	docker exec -it postgres12 dropdb --username=root --owner=root simple_bank
 
+migrateup1:
+	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose up 1
+
 migrateup:
 	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose up
 
 migratedown:
 	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose down
+
+migratedown1:
+	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose down 1
 
 sqlc:
 	sqlc generate
@@ -25,4 +31,4 @@ server:
 mock:
 	mockgen -destination db/mock/store.go -package mockdb github.com/celtic01/bank_project/db/sqlc Store
 
-.PHONY: postgres createdb dropdb migrateup migratedown server mock
+.PHONY: postgres createdb dropdb migrateup migrateup1 migratedown migratedown1 server mock
