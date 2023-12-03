@@ -1,8 +1,10 @@
 name: ci-test
 
 on:
-    push:
-        branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
 
 jobs:
     test:
@@ -26,7 +28,7 @@ jobs:
             - name: Set up Go 1.x
               uses: actions/setup-go@v2
               with:
-                go-version: ^1.15
+                go-version: ^1.16
               id: go
             
             - name: Check out code into the Go module directory
@@ -34,8 +36,8 @@ jobs:
             
             - name: set up migrate cli
               run: |
-                curl -L https://github.com/golang-migrate/migrate/releases/download/v4.12.2/migrate.linux-amd64.tar.gz | tar xvz
-                sudo mv migrate.linux-amd64 /usr/bin/migrate
+                curl -L https://github.com/golang-migrate/migrate/releases/download/v4.16.2/migrate.linux-amd64.tar.gz | tar xvz
+                sudo mv migrate /usr/bin/migrate
                 which migrate
 
             - name: Run migrations
