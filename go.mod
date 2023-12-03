@@ -1,6 +1,6 @@
 module github.com/celtic01/bank_project
 
-go 1.21.3
+go 1.16
 
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
