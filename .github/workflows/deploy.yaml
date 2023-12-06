@@ -1,4 +1,4 @@
-name: run unit tests
+name: push image to ECR
 
 on:
   push:
