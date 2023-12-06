@@ -13,6 +13,6 @@ module "secrets_manager" {
     DB_DRIVER             = "postgres",
     SERVER_ADDRESS        = "0.0.0.0/8080",
     ACCESS_TOKEN_DURATION = 15,
-    TOKEN_SYMMETRIC_KEY   = random_password.symmetric_key
+    TOKEN_SYMMETRIC_KEY   = random_string.symmetric_key.id
   })
 }
