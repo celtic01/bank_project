@@ -17,3 +17,4 @@ module "secrets_manager" {
   })
   recovery_window_in_days = 0
 }
+
