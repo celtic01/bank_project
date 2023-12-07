@@ -9,7 +9,7 @@ module "secrets_manager" {
   block_public_policy = true
 
   secret_string = jsonencode({
-    DB_SOURCE             = format("\"postgresql://%s:%s@%s/simple_bank?sslmode=disable\"", module.db.db_instance_username, jsondecode(data.aws_secretsmanager_secret_version.current.secret_string)["password"], module.db.db_instance_endpoint)
+    DB_SOURCE             = format("\"postgresql://%s:%s@%s/simple_bank?sslmode=disable\"", module.db.db_instance_username, urlencode(jsondecode(data.aws_secretsmanager_secret_version.current.secret_string)["password"]), module.db.db_instance_endpoint)
     DB_DRIVER             = "postgres",
     SERVER_ADDRESS        = "0.0.0.0/8080",
     ACCESS_TOKEN_DURATION = 15,
