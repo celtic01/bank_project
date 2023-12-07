@@ -1,0 +1,13 @@
+# Ignore Terraform files that should not be shared or versioned
+*.tfstate
+*.tfstate.backup
+*.tfvars
+
+# Ignore any key files containing sensitive information
+*.pem
+*.pem.pub
+*.key
+*.key.pub
+
+# Ignore .terraform directory which contains downloaded plugins and other files
+**/.terraform/
